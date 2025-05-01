@@ -1,0 +1,23 @@
+.musics{
+    background-color:#f1f1f1;
+
+}
+
+.musics h3{
+    text-align: center;
+    padding-top: 60px;
+    font-size: 35px;
+    
+}
+
+
+.cardivs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:50px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    
+}

@@ -1,0 +1,25 @@
+.card{
+    display: flex;
+    width: 65%;
+    background-color: white;
+    img{
+        width: 30%;
+    }
+}
+
+.about{
+    padding-top: 5%;
+    padding-left: 20px;
+}
+
+.title{
+    font-weight: 100;
+    font-size: 26px;
+    color: red;
+}
+
+.achievment{
+    padding-top: 4%;
+    color:gray;
+    font-size: 22px;
+}
