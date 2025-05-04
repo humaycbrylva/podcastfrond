@@ -1,6 +1,6 @@
 
   .guests {
-    max-width: 1200px;
+    width: 100%;
     margin: auto;
     padding: 40px 20px;
     text-align: center;
@@ -49,3 +49,8 @@
     padding-top: 25px;
   }
   
+  @media(max-width:576px){
+    .guestcard{
+      height: 40vh;
+    }
+  }

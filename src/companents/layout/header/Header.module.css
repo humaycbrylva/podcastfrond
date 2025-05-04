@@ -52,16 +52,35 @@
     }
 }
 
-.icons2 i{
-    color:white;
-    font-size: 32px;
+
+
+.icons2{
+    display: none;
 }
 
 
 
 @media (max-width:576px){
+    .header{
+        width: 100%;
+        
+    }
     .navdiv{
         flex-direction: row;
+        gap: 50%;
+    }
+    .headiv h1{
+        font-size: 45px;
+    }
+    .linkdiv{
+        display: none;
+    }
+    .icons2{
+        display: block;
+    }
+    .icons2 i{
+        color:white;
+        font-size: 40px;
     }
 
 

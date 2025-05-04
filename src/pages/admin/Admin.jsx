@@ -1,27 +1,30 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteProductThunk, getProductThunk, setEditProduct} from '../../redux/reducers/productSlice'
-import FormCard from '../../companents/cards/formcard/FormCard'
-import styles from './Admin.module.css'
-
-const Dashboard = () => {
-  const dispatch = useDispatch()
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./Admin.module.css";
+import {
+  deleteProductThunk,
+  getProductThunk,
  
-  const data = useSelector(state => state.products.products)
-  const loading = useSelector(state => state.products.loading)
-  const error = useSelector(state => state.products.error)
+} from "../../redux/reducers/productSlice";
+import FormCard from "../../companents/cards/formcard/FormCard";
+
+
+
+
+const Admin = ({ handleEdit }) => {
+  const dispatch = useDispatch();
+
+  const data = useSelector((state) => state.products.products);
+  const loading = useSelector((state) => state.products.loading);
+  const error = useSelector((state) => state.products.error);
+  
 
   useEffect(() => {
-    dispatch(getProductThunk())
-  }, [])
+    dispatch(getProductThunk());
+  }, [dispatch]);
 
-  const handleDelete = (_id) => {
-    dispatch(deleteProductThunk(_id));
-  };
-
-  const handleEdit = (item) => {
-    dispatch(setEditProduct(item));
-    
+  const handleDelete = (productId) => {
+    dispatch(deleteProductThunk(productId));
   };
 
   if (loading) return <span>LOADING..</span>
@@ -30,10 +33,10 @@ const Dashboard = () => {
   return (
     <div className={styles.formsdiv}>
       {data && data.map(item => (
-        <FormCard key={item.id} item={item} handleDelete={handleDelete} handleEdit={handleEdit}/>
+        <FormCard key={item.id} item={item} handleDelete={handleDelete} handleEdit={() => handleEdit(item)} />
       ))}
     </div>
   )
 }
 
-export default Dashboard
+export default Admin

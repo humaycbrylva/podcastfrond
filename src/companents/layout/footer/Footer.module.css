@@ -1,11 +1,34 @@
-footer{
-    margin-bottom: 0;
-    background-color: rgb(95, 94, 94);
-    height: 14vh;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.endiv{
+footer {
+    background-color: rgb(95, 94, 94);
+    height: 14vh;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+  
+  .endiv {
     text-align: center;
-    color:white;
+    color: white;
     padding-top: 35px;
-}
+  }
+
+  @media(max-width:576px){
+    footer{
+        width: 100%;
+        margin-bottom: 0;
+    }
+    .endiv{
+        
+
+        h3{
+            font-size: 24px;
+            padding-top: 10px;
+        }
+    }
+  }

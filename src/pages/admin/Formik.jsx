@@ -1,62 +1,76 @@
-import { useFormik } from 'formik';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { postProductThunk, updateProductThunk } from '../../redux/reducers/productSlice';
 import styles from './Admin.module.css';
 import Admin from './Admin';
+import { useFormik } from 'formik';
 
 const Formik = () => {
   const dispatch = useDispatch();
-  const editProduct = useSelector(state => state.products.editProduct);
+  const [editItemId, setEditItemId] = useState();
+
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      achievment: '',
+      image:"",
+      title: "",
+      achievment: ""
     },
-    onSubmit: values => {
-      if (editProduct) {
-        dispatch(updateProductThunk({ id: editProduct.id, updatedData: values }));
+    onSubmit: (data) => {
+      if (editItemId) {
+        dispatch(updateProductThunk({ id: editItemId, updatedData: data }));
+        setEditItemId();
       } else {
-        dispatch(postProductThunk(values));
+        dispatch(postProductThunk(data));
       }
       formik.resetForm();
     },
   });
 
-  useEffect(() => {
-    if (editProduct) {
-      formik.setValues({
-        title: editProduct.title,
-        achievment: editProduct.achievment,
-      });
-    }
-  }, [editProduct]);
+  const handleEdit = (item) => {
+    setEditItemId(item._id); 
+    formik.setValues({
+      image: item.image,
+      title: item.title,
+      achievment: item.achievment,
+    });
+  };
+  
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column',justifyContent:'center',alignItems:'center', gap: '30px' }}>
+    <div className={styles.formsdivs}>
       <form onSubmit={formik.handleSubmit}>
         <div className={styles.forms}>
-          <input className={styles.name}
-            id="name"
-            name="name"
+        <input className={styles.title}
+          id="image"
+          name="image"
+          type="text"
+           placeholder="Image"
+          onChange={formik.handleChange}
+          value={formik.values.image}
+        />
+          <input className={styles.title}
+            id="title"
+            name="title"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.name}
-            placeholder="Name"
+            value={formik.values.title}
+            placeholder="Title"
           />
           <input className={styles.desc}
-            id="description"
-            name="description"
+            id="achievment"
+            name="achievment"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.description}
-            placeholder="Description"
+            value={formik.values.achievment}
+            placeholder="Achievment"
           />
-          <button className={styles.btn} type="submit">{editProduct ? "Edit Product" : "Add Product"}</button>
+          <button className={styles.btn} type="submit">Add</button>
         </div>
       </form>
-      <Admin/>
+      <Admin handleEdit={handleEdit} />
+
     </div>
   );
 };

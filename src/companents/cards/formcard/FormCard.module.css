@@ -51,3 +51,36 @@
     font-size: 20px;
 
 }
+
+@media(max-width:576px){
+    .card{
+        width: 80%;
+        height: 20vh;
+        img{
+           width: 45%;
+        }
+    }
+    .title{
+        font-size: 19px;
+    }
+    .achievment{
+        font-size: 16px;
+    }
+
+    .btns{
+        margin-top: 14px;
+        
+    }
+
+    .del{
+        width: 30%;
+        height: 3vh;
+        font-size: 15px;
+    }
+
+    .edit{
+        width: 30%;
+        height: 3vh;
+        font-size: 15px;
+    }
+}

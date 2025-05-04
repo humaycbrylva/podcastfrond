@@ -22,7 +22,7 @@ const SecTwo = () => {
     <div className={styles.musics}>
         <h3>Behind The Mic</h3>
         <div className={styles.cardivs} >
-           {data && data.slice (0,5).map(item=>(<TwoCard key={item.id} item={item} />))}
+           {data && data.map(item=>(<TwoCard key={item.id} item={item} />))}
         </div>  
     </div>
     

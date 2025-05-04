@@ -23,3 +23,19 @@
     color:gray;
     font-size: 22px;
 }
+
+@media(max-width:576px){
+    .card{
+        width: 85%;
+        height: 20vh;
+        img{
+           width: 45%;
+        }
+    }
+    .title{
+        font-size: 20px;
+    }
+    .achievment{
+        font-size: 18px;
+    }
+}
